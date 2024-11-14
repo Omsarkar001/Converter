@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online File Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #output {
+            margin-top: 20px;
+            word-break: break-all;
+        }
+        .button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Online File Converter</h1>
+    <p>Select a file to convert to Base64 format:</p>
+
+    <!-- File Input -->
+    <input type="file" id="fileInput">
+    <button class="button" onclick="convertFile()">Convert File</button>
+
+    <!-- Output Section -->
+    <div id="output"></div>
+
+    <script>
+        function convertFile() {
+            const fileInput = document.getElementById('fileInput');
+            const output = document.getElementById('output');
+            
+            // Clear previous output
+            output.innerHTML = '';
+
+            // Check if a file was selected
+            if (fileInput.files.length === 0) {
+                alert('Please select a file!');
+                return;
+            }
+
+            // Get the file
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            // Convert file to Base64
+            reader.onload = function(event) {
+                const base64String = event.target.result;
+                output.innerHTML = `<h3>Base64 Conversion Result:</h3><textarea rows="10" cols="50">${base64String}</textarea>`;
+            };
+
+            // Start file reading
+            reader.readAsDataURL(file);
+        }
+    </script>
+
+</body>
+</html>

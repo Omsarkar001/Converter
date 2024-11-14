@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Format Image Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include jsPDF library for PDF generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <!-- The rest of your HTML structure remains the same -->
+    <div class="container">
+        <h1>Multi-Format Image Converter</h1>
+        <p>Upload an image (PNG, JPG, AVIF) and choose the format to convert to:</p>
+
+        <input type="file" id="fileInput" accept="image/png, image/jpeg, image/avif">
+        <select id="formatSelect">
+            <option value="jpeg">Convert to JPEG</option>
+            <option value="png">Convert to PNG</option>
+            <option value="pdf">Convert to PDF</option>
+        </select>
+        <button class="button" onclick="convertImage()">Convert</button>
+
+        <h3>Converted Image:</h3>
+        <a id="downloadLink" class="button" style="display: none;">Download Converted File</a>
+        <img id="outputImage">
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
